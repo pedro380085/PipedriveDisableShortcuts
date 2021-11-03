@@ -18,11 +18,12 @@
     window.addEventListener(type, function(event) {
       console.log(event.target.nodeName);
       console.log(event.type);
-      if (event.target.nodeName == "BODY") {
-          event.stopImmediatePropagation();
-          event.preventDefault();
-          //return false;
-      }
+      if (event.ctrlKey || event.metaKey) return;
+      if (event.target.nodeName != "BODY") return;
+
+      event.stopImmediatePropagation();
+      event.preventDefault();
+
     }, true);
   });
 })();
